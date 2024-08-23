@@ -1,7 +1,4 @@
-import {Listings} from "../lib/constants.js";
-import {useState} from "react";
-export const Itemlist = () => {
-    const [items, setItems] = useState(Listings)
+export const Itemlist = ({items}) => {
 
     return (
         <ul>

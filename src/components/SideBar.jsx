@@ -2,10 +2,10 @@ import {AddItemForm} from "./AddItemForm.jsx";
 import {ButtonGroup} from "./ButtonGroup.jsx";
 import '../style/index.css'
 
-export const SideBar = () => {
+export const SideBar = ({setItems}) => {
     return (
         <div className= 'sidebar'>
-            <AddItemForm />
+            <AddItemForm setItems ={setItems}/>
             <ButtonGroup />
         </div>
     )
