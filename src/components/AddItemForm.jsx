@@ -1,13 +1,12 @@
 import {Button} from "./Button.jsx";
 import {useRef, useState} from "react";
 
-export const AddItemForm = ({setItems}) => {
+export const AddItemForm = ({handleNewList}) => {
     const [Text, setText] = useState('');
     const inputRef = useRef();
 
-    const submitted = (event) => {
+    const submits = (event) => {
         event.preventDefault();
-
     //basic validator
          if(!Text) {
                alert("need to supply something!");
@@ -16,20 +15,14 @@ export const AddItemForm = ({setItems}) => {
                return;
          }
 
-        const addition = {
-            name: Text,
-            packed: true,
-            id: new Date().getMilliseconds()
-        }
-
         inputRef.current.focus()
-        setItems((prev) => [...prev, addition])
+        handleNewList(Text)
         setText('');
     }
 
     return (
         <>
-            <form onSubmit={submitted}>
+            <form onSubmit={submits}>
                 <h2>Add an Item</h2>
                 <input
                     ref={inputRef}

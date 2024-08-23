@@ -6,7 +6,7 @@ export const Listings = [
     },
     {
         name: 'laptop',
-        packed: true,
+        packed: false,
         id:2
     },
     {
@@ -15,6 +15,9 @@ export const Listings = [
         id:3
     }
 ]
+
+export const secondayButton = ['Mark all as complete','Mark all as incomplete',
+    'Reset to initial','Remove all items']
 
 //export default listings;
 //cannot be sent by default because it is not a component
