@@ -1,11 +1,11 @@
 import {Logo} from "./Logo.jsx";
 import {Counter} from "./Counter.jsx";
 
-export const Header = () => {
+export const Header = ({handleCount}) => {
     return (
         <header>
             <Logo />
-            <Counter />
+            <Counter handleCount ={handleCount}/>
         </header>
     )
 }

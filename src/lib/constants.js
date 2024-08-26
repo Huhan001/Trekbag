@@ -21,3 +21,10 @@ export const secondayButton = ['Mark all as complete','Mark all as incomplete',
 
 //export default listings;
 //cannot be sent by default because it is not a component
+
+
+export const optionProvider = [
+    { value: 'default', label: 'Sort by default' },
+    { value: 'packed', label: 'Sort by packed' },
+    { value: 'unpacked', label: 'Sort by unpacked' },
+  ];

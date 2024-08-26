@@ -4,10 +4,22 @@ import {Header} from "./Header.jsx";
 import {Itemlist} from "./ItemList.jsx";
 import {SideBar} from "./SideBar.jsx";
 import {Listings} from "../lib/constants.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const App = () => {
-  const [items, setItems] = useState(Listings)
+//  📌 one alternative
+//  const localstorage = JSON.parse(localStorage.getItem('items'))
+//  const [items, setItems] = useState(localstorage || Listings)
+
+//📌 second alternative || safe and good.
+  const [items, setItems] = useState(() => {
+      return JSON.parse(localStorage.getItem('items'))|| Listings})
+
+  const handleCheckedCount = () => {
+    const checked = items.filter(item => item.packed === true).length;
+    const total = items.length;
+    return {total: total, checked: checked }
+  }
 
   const handleRemoveAllItems = () => {
     setItems([]);
@@ -47,16 +59,21 @@ const App = () => {
     setItems(newItems)
   }
 
+//📌 adding local storage
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items))
+  }, [items])
+
   return (
     <>
       <BackgroundHeading />
       
       <main>
-        <Header />
+        <Header handleCount ={handleCheckedCount} />
         <Itemlist
           items = {items}
-          handleDeletion ={handleDeletion}
-          handleCheck ={handleChecked}
+          handleDeletion = {handleDeletion}
+          handleCheck = {handleChecked}
         />
         <SideBar
           items ={items}
